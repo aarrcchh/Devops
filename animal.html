@@ -1,0 +1,132 @@
+<html>
+<head>
+<style>
+button {
+
+    background: transparent;
+    border: none !important;
+    font-size:0;
+}
+input{
+	background:transparent;
+	border:none;
+	color:blue;
+	font-size:17px;
+}
+#image-holder {
+  width: 400px;
+  height: auto;
+  position: fixed;
+  left: 600px;
+  top: 200px; /* Or perhaps different coordinates */
+  display: none;
+}
+</style>
+</head>
+<body>
+	<form method="POST">
+		<font size="6">
+			<b>Dog Breeds</b>
+		</font>
+		<font size="4">
+		<p>
+			You’ve decided to bring a dog into your family, but now it’s time to choose a breed. 
+			This can be a difficult process with lots of factors to consider. 
+			To help make your search easier, we have put together a listing of the most popular 
+			dog breeds in Australia.
+		</p>
+		<p>
+			You’ll be able to find pictures, learn about breed history, temperament, common breed 
+			diseases and conditions and lots of other interesting facts to help guide you through 
+			the process of choosing the right dog!	
+		</p> 
+		</font>
+		{{range .Todos}}
+		<center>
+		<img id="image-holder" alt="">
+		<table>
+		<tr>
+			<td colspan="3"><img src="{{.Image_url}}" width="300" height="250"></td>
+			<td  width="250">
+				<br>
+				<font size="6">{{.Name}}</font><br>
+				Recommanded For   :<br>
+				Maintenance Level :<br>
+				Lifespan          :<br>
+				Temperament       :<br>
+				Health Risk       :<br>
+				
+				<input value="know more" type="submit" onclick="open_some('{{.Url}}')">
+			</td>
+			<td>
+				<br><br><br>
+				{{.Recommanded_For}}<br>
+				{{.Maintenance_level}}<br>
+				{{.Lifespan}}<br>
+				{{.Temperament}}<br>
+				{{.Health_risk}}<br>
+			
+				
+				<button id="arc">{{.Url}}</button>
+			</td>
+		<tr>
+		<tr>
+			<td>
+				<a href="#" onmouseover="showMyImage1('{{.Img_one}}');"onmouseout="invisible1();">
+					<img id="largeImage"width="70" height="50" src="{{.Img_one}}">
+				</a>
+			</td>
+			<td>
+				<a href="#" onmouseover="showMyImage2('{{.Img_two}}');"onmouseout="invisible1();">
+					<img width="70" height="50" src="{{.Img_two}}">
+				</a>
+			</td>
+			<td>
+				<a href="#" onmouseover="showMyImage3('{{.Img_three}}');"onmouseout="invisible1();">
+				<img width="70" height="50" src="{{.Img_three}}"></td>
+		</tr>
+		</table>
+		{{end}}
+			
+	</form>
+	<script>
+	function open_some(url){
+	
+		window.open(url)
+	}
+	function showMyImage1(url) {
+	  
+	  var img=document.getElementById('image-holder')
+	  img.src =url
+	  img.style.display = 'block';
+	}
+	function invisible1(){
+		var img = document.getElementById('image-holder');
+		img.style.display='none'
+	}
+	
+	function showMyImage2(url) {
+	  
+	  var img=document.getElementById('image-holder')
+	  img.src =url
+	  img.style.display = 'block';
+	}
+	function invisible2(){
+		var img = document.getElementById('image-holder');
+		img.style.display='none'
+	}
+	
+	function showMyImage3(url) {
+	  
+	  var img=document.getElementById('image-holder')
+	  img.src =url
+	  img.style.display = 'block';
+	}
+	function invisible3(){
+		var img = document.getElementById('image-holder');
+		img.style.display='none'
+	}
+	
+	</script>
+</body>
+</html>
